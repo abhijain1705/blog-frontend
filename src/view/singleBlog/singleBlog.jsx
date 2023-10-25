@@ -74,16 +74,28 @@ function SingleBlog() {
           <p>{new Date(blogData.uploadDate).toLocaleString()}</p>
 
           <div>
-            <FacebookShareButton className="icon" url="https://youtube.com">
+            <FacebookShareButton
+              className="icon"
+              url={`https://blog-frontend-rho-swart.vercel.app/blog/${params.id}`}
+            >
               <FacebookIcon size={32} round={true} />
             </FacebookShareButton>
-            <TwitterShareButton className="icon" url="https://youtube.com">
+            <TwitterShareButton
+              className="icon"
+              url={`https://blog-frontend-rho-swart.vercel.app/blog/${params.id}`}
+            >
               <TwitterIcon size={32} round={true} />
             </TwitterShareButton>
-            <RedditShareButton className="icon" url="https://youtube.com">
+            <RedditShareButton
+              className="icon"
+              url={`https://blog-frontend-rho-swart.vercel.app/blog/${params.id}`}
+            >
               <RedditIcon size={32} round={true} />
             </RedditShareButton>
-            <TelegramShareButton className="icon" url="https://youtube.com">
+            <TelegramShareButton
+              className="icon"
+              url={`https://blog-frontend-rho-swart.vercel.app/blog/${params.id}`}
+            >
               <TelegramIcon size={32} round={true} />
             </TelegramShareButton>
           </div>
