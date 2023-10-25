@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./signup.css";
 import logo from "../../asset/logo.png";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import signupAPI from "../../api/signup";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   function handleEmail(event) {
     setEmail(event.target.value);
   }
 
   function handleName(event) {
-    console.log(event);
     setName(event.target.value);
   }
 
@@ -20,17 +25,32 @@ function Signup() {
     setPassword(event.target.value);
   }
 
+  function handleForm(event) {
+    console.log(event);
+    event.preventDefault();
+    signupAPI(name, email, password, toast, navigate, Cookies);
+  }
+
+  useEffect(() => {
+    let cookie = Cookies.get("token");
+    if (cookie !== undefined) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div className="signupParent">
+      <ToastContainer />
       <img alt="logo" src={logo} />
       <h1>Welcome to dailyblog</h1>
       <h3>Create Account</h3>
-      <form>
+      <form onSubmit={handleForm}>
         <div className="inputWrapper">
           <label htmlFor="name">Name</label>
           <input
             onChange={handleName}
             id="name"
+            type="text"
             value={name}
             placeholder="Enter Your Name"
           />
@@ -40,6 +60,7 @@ function Signup() {
           <input
             onChange={handleEmail}
             id="email"
+            type="email"
             value={email}
             placeholder="Enter Your Mail Id"
           />
@@ -50,6 +71,7 @@ function Signup() {
             onChange={handlePassword}
             id="password"
             value={password}
+            type="password"
             placeholder="Enter Your Password"
           />
         </div>

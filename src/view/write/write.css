@@ -1,0 +1,46 @@
+.writArea {
+  width: 75%;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.header {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.header button {
+  background-color: blue;
+  color: white;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+.headingInput,
+.paraInput,
+.chooseFile {
+  width: 90%;
+  margin: 25px auto;
+}
+
+.chooseFile input {
+  display: none;
+}
+
+.paraInput textarea {
+  font-size: 14px;
+  padding: 12px;
+  border: none;
+}
+
+.headingInput input {
+  width: 100%;
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+  padding: 12px;
+}

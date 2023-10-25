@@ -1,0 +1,51 @@
+.singleBlogParent {
+  width: 75%;
+  margin: 50px auto;
+  padding: 25px;
+  border: 1px solid black;
+}
+
+.blogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blogHeader img {
+  border-radius: 12px;
+}
+
+.blogMetaContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 10px;
+}
+.blogMetaContent a {
+  color: black;
+}
+
+.icon {
+  margin: 0 10px;
+}
+
+.commentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.newComment form input {
+  border-radius: 6px;
+  border: 1px solid black;
+  width: 300px;
+  height: 30px;
+}
+
+
+.newComment form button {
+  width: 60px;
+  height: 35px;
+  margin-left: 10px;
+}

@@ -1,0 +1,49 @@
+.commentBox {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  justify-content: center;
+}
+
+.commentSection,
+.replySection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.replySection {
+  align-items: flex-end;
+}
+
+.commentSection h2,
+.replySection h2 {
+  margin: 0px;
+}
+
+.commentSection a,
+.replySection a {
+  color: black;
+}
+
+.commentBox form {
+    margin: 10px 0px;
+}
+
+.commentBox form input {
+  width: 200px;
+  height: 30px;
+  border-radius: 12px;
+  border: 1px solid black;
+}
+
+.commentBox form button {
+    width: 40px;
+    margin-left: 10px;
+}

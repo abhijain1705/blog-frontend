@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../asset/logo.png";
 import "./login.css";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import loginAPI from "../../api/login";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -10,21 +15,37 @@ function Login() {
     setEmail(event.target.value);
   }
 
+  const navigate = useNavigate();
   function handlePassword(event) {
     setPassword(event.target.value);
   }
+  function handleForm(event) {
+    console.log(event);
+    event.preventDefault();
+    loginAPI(email, password, toast, navigate, Cookies);
+  }
+
+  useEffect(() => {
+    let cookie = Cookies.get("token");
+    if (cookie !== undefined) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div className="signupParent">
       <img alt="logo" src={logo} />
+      <ToastContainer />
       <h1>Welcome to dailyblog</h1>
       <h3>Login to Your Account</h3>
-      <form>
+      <form onSubmit={handleForm}>
         <div className="inputWrapper">
           <label htmlFor="email">Email</label>
           <input
             onChange={handleEmail}
             id="email"
             value={email}
+            type="email"
             placeholder="Enter Your Mail Id"
           />
         </div>
@@ -33,6 +54,7 @@ function Login() {
           <input
             onChange={handlePassword}
             id="password"
+            type="password"
             value={password}
             placeholder="Enter Your Password"
           />
