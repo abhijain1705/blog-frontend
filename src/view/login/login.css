@@ -31,7 +31,7 @@ img {
   border-radius: 6px;
 }
 
-form button {
+.signupParent form button {
   margin-top: 10px;
   width: 315px;
   height: 40px;

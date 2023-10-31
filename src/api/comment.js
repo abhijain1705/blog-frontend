@@ -1,20 +1,47 @@
-async function newComment(
-  blogId,
-  commentTime,
+async function fetchBlogComments(blogId, toast, setBlogComments) {
+  const apiURL = `https://restaurant-kitchen-k6lk.onrender.com/comment/getBlogSpecificComments?blogId=${blogId}`;
+
+  async function handleResponse(data) {
+    console.log(data);
+    if (data.ok === true) {
+      const response = await data.json();
+      console.log("response", response);
+      setBlogComments(response.data);
+    } else {
+      const response = await data.json();
+      console.log("response", response);
+      toast(response.message);
+    }
+  }
+
+  await fetch(apiURL, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(handleResponse)
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+async function createNewComment(
   commentUserName,
-  commentUserId,
   commentContent,
+  commentUserId,
+  blogId,
   toast,
   token,
-  setAllComments
+  setBlogComments,
+  setCommentContent
 ) {
   const apiURL = `https://restaurant-kitchen-k6lk.onrender.com/comment/newComment?blogId=${blogId}`;
-
   const commentInformation = {
     commentContent: commentContent,
     commentUserName: commentUserName,
     commentUserId: commentUserId,
-    commentTime: commentTime,
+    commentTime: new Date(),
     replyContent: "",
     replyUserName: "",
     replyUserId: "",
@@ -24,8 +51,9 @@ async function newComment(
   async function handleResponse(data) {
     if (data.ok === true) {
       const response = await data.json();
-      getBlogSpecificComments(blogId, setAllComments);
       console.log("response", response);
+      setCommentContent("");
+      fetchBlogComments(blogId, toast, setBlogComments);
       toast(response.message);
     } else {
       const response = await data.json();
@@ -47,31 +75,33 @@ async function newComment(
     });
 }
 
-async function replyComment(
-  commentId,
-  replyTime,
-  replyUserId,
-  replyUserName,
+async function replyToComment(
   replyContent,
+  replyUserName,
+  replyUserId,
+  commentId,
   toast,
   token,
+  setReplyContent,
+  setBlogComments,
   blogId,
-  setAllComments
+  hideField
 ) {
   const apiURL = `https://restaurant-kitchen-k6lk.onrender.com/comment/replyComment?commentId=${commentId}`;
-
   const commentInformation = {
     replyContent: replyContent,
     replyUserName: replyUserName,
     replyUserId: replyUserId,
-    replyTime: replyTime,
+    replyTime: new Date(),
   };
 
   async function handleResponse(data) {
     if (data.ok === true) {
       const response = await data.json();
       console.log("response", response);
-      getBlogSpecificComments(blogId, setAllComments);
+      setReplyContent("");
+      hideField();
+      fetchBlogComments(blogId, toast, setBlogComments);
       toast(response.message);
     } else {
       const response = await data.json();
@@ -93,27 +123,4 @@ async function replyComment(
     });
 }
 
-async function getBlogSpecificComments(blogId, setAllComments) {
-  const apiURL = `https://restaurant-kitchen-k6lk.onrender.com/comment/getBlogSpecificComments?blogId=${blogId}`;
-
-  async function handleResponse(data) {
-    if (data.ok === true) {
-      const response = await data.json();
-      console.log("response", response);
-      setAllComments(response.data);
-    }
-  }
-
-  await fetch(apiURL, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then(handleResponse)
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
-export { newComment, replyComment, getBlogSpecificComments };
+export { fetchBlogComments, createNewComment, replyToComment };
