@@ -42,7 +42,9 @@ function BlogCard(props) {
           <button onClick={takeToUpdatePage} className="updateBtn">
             Update
           </button>
-          <button onClick={deleteTheBlog} className="deleteBtn">Delete</button>
+          <button onClick={deleteTheBlog} className="deleteBtn">
+            Delete
+          </button>
         </div>
       ) : (
         <div></div>

@@ -45,6 +45,8 @@ function Profile() {
               image={blog.blogImage}
               date={blog.uploadDate}
               h1={blog.h1}
+              userid={blog.userId}
+              setBlogData={setBlogData}
               showTheseButton={isSameUserId}
               p1={blog.p1}
               id={blog._id}

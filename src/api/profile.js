@@ -146,18 +146,18 @@ async function deleteBlog(blogId, toast, token, userid, setBlogData) {
       console.log("response", response);
       toast(response.message);
     }
-
-    await fetch(apiURL, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then(handleResponse)
-      .catch((error) => {
-        console.log(error);
-      });
   }
+
+  await fetch(apiURL, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then(handleResponse)
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 export { fetchUserSpecificBlogs, writeNewBlog, updateBlog, deleteBlog };
