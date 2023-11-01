@@ -1,12 +1,17 @@
-async function blogAPI(setBlogData) {
+async function getAllBlogs(toast, setBlogData) {
   const apiURL =
     "https://restaurant-kitchen-k6lk.onrender.com/blog/getAllBlogs";
 
   async function handleResponse(data) {
+    console.log(data);
     if (data.ok === true) {
       const response = await data.json();
       console.log("response", response);
       setBlogData(response.blogData);
+    } else {
+      const response = await data.json();
+      console.log("response", response);
+      toast(response.message);
     }
   }
 
@@ -22,7 +27,7 @@ async function blogAPI(setBlogData) {
     });
 }
 
-async function singleBlogAPI(blogId, setBlogData) {
+async function fetchSingleBlog(blogId, toast, setBlogData) {
   const apiURL = `https://restaurant-kitchen-k6lk.onrender.com/blog/fetchSingleBlog?id=${blogId}`;
 
   async function handleResponse(data) {
@@ -30,6 +35,10 @@ async function singleBlogAPI(blogId, setBlogData) {
       const response = await data.json();
       console.log("response", response);
       setBlogData(response.blogData);
+    } else {
+      const response = await data.json();
+      console.log("response", response);
+      toast(response.message);
     }
   }
 
@@ -44,4 +53,5 @@ async function singleBlogAPI(blogId, setBlogData) {
       console.log(error);
     });
 }
-export { blogAPI, singleBlogAPI };
+
+export { getAllBlogs, fetchSingleBlog };

@@ -18,7 +18,7 @@ img {
 }
 
 .inputWrapper label {
-  color: blue;
+  color: #3f1517;
   margin: 5px 0px;
   font-weight: 600;
 }
@@ -28,7 +28,7 @@ img {
   height: 30px;
   padding: 6px;
   border: 1px solid black;
-  border-radius: 6px;
+  /* border-radius: 6px; */
 }
 
 form button {
@@ -37,8 +37,8 @@ form button {
   height: 40px;
   padding: 6px;
   border: 1px solid black;
-  border-radius: 6px;
-  background-color: blue;
+  /* border-radius: 6px; */
+  background-color: #3f1517;
   color: white;
 }
 

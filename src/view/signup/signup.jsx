@@ -42,10 +42,10 @@ function Signup() {
     <div className="signupParent">
       <ToastContainer />
       <img alt="logo" src={logo} />
-      <h1>Welcome to dailyblog</h1>
-      <h3>Create Account</h3>
+      <h1 className="montserrat-font">Welcome to dailyblog</h1>
+      <h3 className="montserrat-font">Create Account</h3>
       <form onSubmit={handleForm}>
-        <div className="inputWrapper">
+        <div className="inputWrapper jamjuree-font">
           <label htmlFor="name">Name</label>
           <input
             onChange={handleName}

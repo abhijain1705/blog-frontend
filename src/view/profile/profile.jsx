@@ -1,63 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./profile.css";
-import Blog from "../component/blog/blog";
-import { useParams, useNavigate } from "react-router-dom";
-import {
-  newBlog,
-  updateBlog,
-  deleteBlog,
-  fetchUserSpecificBlogs,
-} from "../../api/profile";
+import { fetchUserSpecificBlogs } from "../../api/profile";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate, useParams } from "react-router-dom";
+import BlogCard from "../../component/blogCard/blogCard";
 import Cookies from "js-cookie";
 
 function Profile() {
   const params = useParams();
-  console.log(params);
-  const [userBlogs, setUserBlogs] = useState([]);
-  const navigate = useNavigate();
+  const [blogData, setBlogData] = useState([]);
   const [isSameUserId, setIsSameUserId] = useState(false);
 
-  function deleteThisBlog(blogId) {
-    deleteBlog(blogId);
-  }
-
   useEffect(() => {
+    const token = Cookies.get("token");
     const userid = Cookies.get("userid");
-    if (userid === undefined) {
-      navigate("/");
-    } else if (userid === params.id) {
+
+    if (userid === params.id) {
       setIsSameUserId(true);
     }
-    fetchUserSpecificBlogs(params.id, setUserBlogs);
+    fetchUserSpecificBlogs(toast, params.id, token, setBlogData);
   }, []);
 
-  function navigateToWriteBlogPage() {
-    navigate("/writenewblog");
+  const navigate = useNavigate();
+  function navigateToWritePage() {
+    navigate("/write");
   }
 
   return (
     <div>
       <div className="profileHeader">
-        <h1>{isSameUserId === true ? "Your Writes" : "User Writes"}</h1>
+        <h1>Welcome to the Profile</h1>
         {isSameUserId === true ? (
-          <button onClick={navigateToWriteBlogPage}>Write New Blog</button>
+          <button onClick={navigateToWritePage}>Write New Blog</button>
         ) : (
           <p></p>
         )}
       </div>
-
-      <div className="blogCollection">
-        {userBlogs.map((userBlog) => {
-          const date = new Date(userBlog.uploadDate).toLocaleString();
+      <ToastContainer />
+      <div className="blogParent">
+        {blogData.map((blog) => {
           return (
-            <Blog
-              image={userBlog.blogImage}
-              heading={userBlog.h1}
-              deleteThisBlog={deleteThisBlog}
-              date={date}
-              isSameUserProfile={isSameUserId}
-              userId={userBlog.userId}
-              id={userBlog._id}
+            <BlogCard
+              image={blog.blogImage}
+              date={blog.uploadDate}
+              h1={blog.h1}
+              showTheseButton={isSameUserId}
+              p1={blog.p1}
+              id={blog._id}
             />
           );
         })}

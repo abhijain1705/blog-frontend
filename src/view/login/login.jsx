@@ -36,10 +36,10 @@ function Login() {
     <div className="signupParent">
       <img alt="logo" src={logo} />
       <ToastContainer />
-      <h1>Welcome to dailyblog</h1>
-      <h3>Login to Your Account</h3>
+      <h1 className="montserrat-font">Welcome to dailyblog</h1>
+      <h3 className="montserrat-font">Login to Your Account</h3>
       <form onSubmit={handleForm}>
-        <div className="inputWrapper">
+        <div className="inputWrapper jamjuree-font">
           <label htmlFor="email">Email</label>
           <input
             onChange={handleEmail}

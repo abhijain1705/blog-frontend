@@ -11,8 +11,8 @@ async function loginAPI(email, password, toast, navigate, Cookies) {
       console.log("response", response);
       toast(response.message);
       Cookies.set("token", response.token, { expires: 2 });
-      Cookies.set("username", response.data.username, { expires: 2 });
       Cookies.set("userid", response.data._id, { expires: 2 });
+      Cookies.set("username", response.data.username, { expires: 2 });
       setTimeout(() => {
         navigate("/");
       }, 3000);
