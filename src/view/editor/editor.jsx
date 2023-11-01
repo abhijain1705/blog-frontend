@@ -26,13 +26,15 @@ function Editor() {
   }, [params]);
 
   useEffect(() => {
-    setH1(blogData.h1);
-    setP1(blogData.p1);
-    setP2(blogData.p2);
-    setP3(blogData.p3);
-    setBlogImageLink(blogData.blogImage);
-    setH2(blogData.h2);
-    setH3(blogData.h3);
+    if (Object.keys(blogData).length > 0) {
+      setH1(blogData.h1);
+      setP1(blogData.p1);
+      setP2(blogData.p2);
+      setP3(blogData.p3);
+      setBlogImageLink(blogData.blogImage);
+      setH2(blogData.h2);
+      setH3(blogData.h3);
+    }
   }, [blogData]);
 
   function handleBlogImage(event) {
