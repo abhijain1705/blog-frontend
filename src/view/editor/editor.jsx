@@ -19,12 +19,11 @@ function Editor() {
   const [blogData, setBlogData] = useState({});
 
   const params = useParams();
-  console.log(params.id);
   useEffect(() => {
     if (params.id !== undefined) {
       fetchSingleBlog(params.id, toast, setBlogData);
     }
-  }, [params.id]);
+  }, [params]);
 
   useEffect(() => {
     setH1(blogData.h1);
