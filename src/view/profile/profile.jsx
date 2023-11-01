@@ -20,7 +20,7 @@ function Profile() {
       setIsSameUserId(true);
     }
     fetchUserSpecificBlogs(toast, params.id, token, setBlogData);
-  }, []);
+  }, [params.id]);
 
   const navigate = useNavigate();
   function navigateToWritePage() {

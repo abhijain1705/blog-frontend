@@ -30,7 +30,7 @@ function Login() {
     if (cookie !== undefined) {
       navigate("/");
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="signupParent">

@@ -23,7 +23,7 @@ function SingleBlog() {
   useEffect(() => {
     fetchSingleBlog(params.id, toast, setBlogData);
     fetchBlogComments(params.id, toast, setBlogComments);
-  }, []);
+  }, [params.id]);
 
   function handleNewComment(event) {
     setCommentContent(event.target.value);

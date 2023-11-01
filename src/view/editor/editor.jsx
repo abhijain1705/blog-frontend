@@ -24,7 +24,7 @@ function Editor() {
     if (params.id !== undefined) {
       fetchSingleBlog(params.id, toast, setBlogData);
     }
-  }, []);
+  }, [params.id]);
 
   useEffect(() => {
     setH1(blogData.h1);
