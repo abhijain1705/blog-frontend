@@ -72,7 +72,7 @@ function SingleBlog() {
           <hr />
           <div className="commentHeader">
             <h3>Comments</h3>
-            <ShareTray />
+            <ShareTray blogId={params.id} />
           </div>
           <hr />
 

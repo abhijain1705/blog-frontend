@@ -13,26 +13,34 @@ import {
   TwitterIcon,
 } from "react-share";
 
-function ShareTray() {
+function ShareTray(props) {
   return (
     <ul className="shareIcons">
       <li>
-        <FacebookShareButton url="https://www.npmjs.com/package/react-share">
+        <FacebookShareButton
+          url={`https://abhijain-dailyblog.netlify.app/blog/${props.blogId}`}
+        >
           <FacebookIcon size={20} round={true} />
         </FacebookShareButton>
       </li>
       <li>
-        <TelegramShareButton url="https://www.npmjs.com/package/react-share">
+        <TelegramShareButton
+          url={`https://abhijain-dailyblog.netlify.app/blog/${props.blogId}`}
+        >
           <TelegramIcon size={20} round={true} />
         </TelegramShareButton>
       </li>
       <li>
-        <LinkedinShareButton url="https://www.npmjs.com/package/react-share">
+        <LinkedinShareButton
+          url={`https://abhijain-dailyblog.netlify.app/blog/${props.blogId}`}
+        >
           <LinkedinIcon size={20} round={true} />
         </LinkedinShareButton>
       </li>{" "}
       <li>
-        <TwitterShareButton url="https://www.npmjs.com/package/react-share">
+        <TwitterShareButton
+          url={`https://abhijain-dailyblog.netlify.app/blog/${props.blogId}`}
+        >
           <TwitterIcon size={20} round={true} />
         </TwitterShareButton>
       </li>

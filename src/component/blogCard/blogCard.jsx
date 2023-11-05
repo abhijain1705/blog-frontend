@@ -35,7 +35,7 @@ function BlogCard(props) {
         <p className="montserrat-font">{initialPara}</p>
       </div>
       <hr />
-      <ShareTray />
+      <ShareTray blogId={props.id} />
 
       {props.showTheseButton === true ? (
         <div className="actionButtonWrapper">
