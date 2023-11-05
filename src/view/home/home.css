@@ -37,6 +37,7 @@
 
 .content button {
   padding: 12px;
+  cursor: pointer;
   border-radius: 12px;
   border: 2px solid black;
   color: white;
